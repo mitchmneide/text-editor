@@ -29,6 +29,8 @@ module.exports = () => {
       new WebpackPwaManifest({
         name: 'Just Another Text Editor',
         short_name: 'JATE',
+        fingerprints:false,
+        inject: true,
         description: 'Text editor',
         background_color: '#272822',
         theme_color: '#31a9e1',
@@ -56,7 +58,11 @@ module.exports = () => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: ['@babel/preset-env'],
+              plugins: [
+                '@babel/plugin-proposal-object-rest-spread',
+                '@babel/transform-runtime'
+              ]
             }
           }
         }

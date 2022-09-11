@@ -26,7 +26,8 @@ if (typeof editor === 'undefined') {
 // Check if service workers are supported
 if ('serviceWorker' in navigator) {
   // register workbox service worker
-  const workboxSW = new Workbox('/src-sw.js');
+  //  src-sw.js was causing error in install btn and console gave error with it changed to ./service-worker.js matching module work
+  const workboxSW = new Workbox('./service-worker.js');
   workboxSW.register();
 } else {
   console.error('Service workers are not supported in this browser.');
